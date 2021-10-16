@@ -2,14 +2,14 @@ package main.nodes;
 
 import main.nodes.*;
 
-public class LetNode extends Node {
+public class RecNode extends Node {
 	
-	public LetNode(int depth){
+	public RecNode(int depth){
 		super(depth);
 	}
 	
 	@Override
-	public Node getReplacement() { return new AcceptedNode("gamma");}
+	public Node getReplacement() {return new AcceptedNode("gamma");}
 	
 	@Override
 	public void attachStandardizedChildren(Node replacement) {}

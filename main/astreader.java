@@ -4,7 +4,7 @@ import java.io.File;  // Import the File class
 import java.io.FileNotFoundException;  // Import this class to handle errors
 import java.util.Scanner;
 import java.util.ArrayList;
-import main.nodes.Node;
+import main.nodes.*;
 
 //Takes a AST and returns a logic tree of nodes
 
@@ -34,7 +34,8 @@ public class astreader {
 				int depth = getDepth(line);
 				line = line.substring(depth);
 				
-				Node thisNode = new Node(line, depth);  //have to add a NodeFactory here
+				//Node thisNode = new Node(line, depth);  //have to add a NodeFactory here
+				Node thisNode = NodeFactory.createNode(line, depth);
 				
 				//executes only if we need to go back up tree
 				while (depth < currentDepth) {

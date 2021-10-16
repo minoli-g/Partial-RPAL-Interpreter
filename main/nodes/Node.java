@@ -11,20 +11,31 @@ public abstract class Node {
 	//public Node(String type, int depth) { this.type=type; this.depth = depth; children = new ArrayList<Node>();}
 	
 	public Node(int depth) { this.depth = depth; children = new ArrayList<Node>();}
+	public Node() { children = new ArrayList<Node>(); }
 	
 	public Node getParent() { return parent; }
-	public void setParent(Node n) { this.parent = n; }
-	public String getType() { return type; }
+
+	public void setParent(Node n) { 
+		this.parent = n; 
+		this.depth = getParent().getNodeDepth() + 1;
+	}
+
+	//public String getType() { return type; }
 	
 	public int getNodeDepth() { return depth; }
 	
-	public void addChild(Node child) { child.setParent(this); children.add(child); }
+	public void addChild(Node child) { 
+		child.setParent(this); 
+		children.add(child); 
+	}
 	
 	public void describe() {
-	if (parent!=null) { System.out.println(type + " Child of " + getParent().getType() + Integer.toString(depth)); }
+	
+	if (parent!=null) { System.out.println(this.getClass() + " Child of " + getParent().getClass() + Integer.toString(depth)); }
 		for (Node n: children) {
 			n.describe();
 		}
+		
 	}
 	
 	public Node standardizedVersion(){
