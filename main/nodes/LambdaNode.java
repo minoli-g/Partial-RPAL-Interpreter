@@ -9,6 +9,9 @@ public class LambdaNode extends Node {
 	}
 
 	public LambdaNode() { super(); }
+
+	@Override
+	public String getType() { return "lambda"; }
 	
 	@Override
 	public Node getReplacement() {return this; }
