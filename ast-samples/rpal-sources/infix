@@ -1,0 +1,1 @@
+let Add x y = x + y in Print (3 @Add 4)

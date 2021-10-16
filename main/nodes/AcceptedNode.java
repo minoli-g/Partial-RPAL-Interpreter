@@ -17,15 +17,19 @@ public class AcceptedNode extends Node {
     @Override
     public String getType() { return type; }
 
+    // @Override
+    // public Node standardizedVersion() {
+    //     //System.out.println("Node is already standardized.");
+    //     return this;
+    // }
+
     @Override
-    public Node standardizedVersion() {
-        //System.out.println("Node is already standardized.");
-        return this;
+    public void attachStandardizedChildren(Node replacement) {
+        for (int i=0; i<this.numberOfChildren(); i++) {
+            replacement.addChild(this.getChildAt(i).standardizedVersion());
+        }
     }
 
     @Override
-    public void attachStandardizedChildren(Node replacement) {}
-
-    @Override
-    public Node getReplacement(){ return this; }
+    public Node getReplacement(){ return new AcceptedNode(type,depth); }
 }
