@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public abstract class Node {
 	//private String type;
-	private int depth;
-	private Node parent;
-	private ArrayList<Node> children;
+	protected int depth;
+	protected Node parent;
+	protected ArrayList<Node> children;
 	
 	//public Node(String type, int depth) { this.type=type; this.depth = depth; children = new ArrayList<Node>();}
 	
@@ -20,7 +20,7 @@ public abstract class Node {
 		this.depth = getParent().getNodeDepth() + 1;
 	}
 
-	//public String getType() { return type; }
+	public String getType() { return this.getClass().toString(); }
 	
 	public int getNodeDepth() { return depth; }
 	
@@ -31,7 +31,7 @@ public abstract class Node {
 	
 	public void describe() {
 	
-	if (parent!=null) { System.out.println(this.getClass() + " Child of " + getParent().getClass() + Integer.toString(depth)); }
+	if (parent!=null) { System.out.println(this.getType() + " Child of " + getParent().getType() + Integer.toString(depth)); }
 		for (Node n: children) {
 			n.describe();
 		}

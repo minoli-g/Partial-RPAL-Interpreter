@@ -15,6 +15,9 @@ public class AcceptedNode extends Node {
     }
 
     @Override
+    public String getType() { return type; }
+
+    @Override
     public Node standardizedVersion() {
         System.out.println("Node is already standardized.");
         return this;
