@@ -30,7 +30,7 @@ public class NodeFactory {
             case "function_form": return new FcnFormNode(depth);
             case "and": return new AndNode(depth);
             case "@": return new InfixNode(depth);
-            //case "lambda": return new LambdaNode(depth);
+            case "lambda": return new LambdaNode(depth);
         }
         return new AcceptedNode(type,depth);
     }
