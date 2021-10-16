@@ -42,11 +42,25 @@ public abstract class Node {
 	
 	public void describe() {
 	
-	if (parent!=null) { System.out.println(this.getType() + " Child of " + getParent().getType() + Integer.toString(depth)); }
+		//if (parent!=null) { System.out.println(this.getType() + " Child of " + getParent().getType() + Integer.toString(depth)); }
+		
+		
+		StringBuilder sb = new StringBuilder("");
+		for (int i=0; i<this.depth; i++) { sb.append(".");}
+		sb.append(this.getType());
+		System.out.println(sb);
 		for (Node n: children) {
 			n.describe();
 		}
 		
+		
+	}
+
+	public void updateDepth() {
+		for (Node n: children) {
+			n.setParent(this);
+			n.updateDepth();
+		}
 	}
 	
 	public Node standardizedVersion(){
