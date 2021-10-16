@@ -11,7 +11,7 @@ public class LambdaNode extends Node {
 	public LambdaNode() { super(); }
 	
 	@Override
-	public Node getReplacement() {return new AcceptedNode("gamma"); }
+	public Node getReplacement() {return this; }
 	
 	@Override
 	public void attachStandardizedChildren(Node replacement) {}
