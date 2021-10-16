@@ -9,9 +9,27 @@ public class AndNode extends Node {
 	}
 	
 	@Override
-	public Node getReplacement() { return new AcceptedNode("gamma"); }
+	public Node getReplacement() { return new AcceptedNode("="); }
 	
 	@Override
-	public void attachStandardizedChildren(Node replacement) {}
+	public void attachStandardizedChildren(Node replacement) {
+
+		Node cm = new AcceptedNode(",");
+		Node tau = new AcceptedNode("tau");
+
+		for (int i=0; i<this.numberOfChildren(); i++) {
+
+			Node eq = this.getChildAt(i).standardizedVersion();
+			Node x = eq.getChildAt(0).standardizedVersion();
+			Node e = eq.getChildAt(1).standardizedVersion();
+
+			cm.addChild(x);
+			tau.addChild(e);
+		}
+		replacement.addChild(cm);
+		replacement.addChild(tau);
+
+		return;
+	}
 	
 }
