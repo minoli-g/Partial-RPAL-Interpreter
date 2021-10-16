@@ -9,9 +9,29 @@ public class RecNode extends Node {
 	}
 	
 	@Override
-	public Node getReplacement() {return new AcceptedNode("gamma");}
+	public Node getReplacement() {return new AcceptedNode("=");}
 	
 	@Override
-	public void attachStandardizedChildren(Node replacement) {}
+	public void attachStandardizedChildren(Node replacement) {
+
+		Node eq = this.getChildAt(0).standardizedVersion();
+		Node x = eq.getChildAt(0);
+		Node e = eq.getChildAt(1);
+
+		replacement.addChild(x);
+
+		Node gn = new AcceptedNode("gamma");
+		gn.addChild(new AcceptedNode("Y"));
+		
+		Node ln = new LambdaNode();
+		ln.addChild(x);
+		ln.addChild(e);
+
+		gn.addChild(ln);
+
+		replacement.addChild(gn);
+
+		return;
+	}
 	
 }
