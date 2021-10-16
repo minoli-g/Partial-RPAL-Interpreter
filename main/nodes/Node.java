@@ -23,6 +23,15 @@ public abstract class Node {
 	public String getType() { return this.getClass().toString(); }
 	
 	public int getNodeDepth() { return depth; }
+
+	public Node getChildAt(int position) {
+		try {
+			return children.get(position);
+		} catch (Exception e) {
+			System.out.println("Excpetion");
+		}
+		return new AcceptedNode("NO");
+	}
 	
 	public void addChild(Node child) { 
 		child.setParent(this); 

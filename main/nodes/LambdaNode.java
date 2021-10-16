@@ -7,6 +7,8 @@ public class LambdaNode extends Node {
 	public LambdaNode(int depth){
 		super(depth);
 	}
+
+	public LambdaNode() { super(); }
 	
 	@Override
 	public Node getReplacement() {return new AcceptedNode("gamma"); }

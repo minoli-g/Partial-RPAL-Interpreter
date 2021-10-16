@@ -19,7 +19,7 @@ public class AcceptedNode extends Node {
 
     @Override
     public Node standardizedVersion() {
-        System.out.println("Node is already standardized.");
+        //System.out.println("Node is already standardized.");
         return this;
     }
 

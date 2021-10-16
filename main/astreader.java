@@ -60,7 +60,9 @@ public class astreader {
 			
 			astReader.close();
 			root.describe();
-			
+			System.out.println("----------");
+			Node newn = root.standardizedVersion();
+			newn.describe();
 			
 			
 			
