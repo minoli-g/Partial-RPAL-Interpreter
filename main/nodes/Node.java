@@ -28,10 +28,12 @@ public abstract class Node {
 		try {
 			return children.get(position);
 		} catch (Exception e) {
-			System.out.println("Excpetion");
+			e.printStackTrace();
 		}
 		return new AcceptedNode("NO");
 	}
+
+	public int numberOfChildren() { return children.size(); }
 	
 	public void addChild(Node child) { 
 		child.setParent(this); 

@@ -13,9 +13,11 @@ public class LetNode extends Node {
 	
 	@Override
 	public void attachStandardizedChildren(Node replacement) {
-		Node x = this.getChildAt(0).getChildAt(0);
-		Node e = this.getChildAt(0).getChildAt(1);
-		Node p = this.getChildAt(1);
+
+		Node D = this.getChildAt(0).standardizedVersion();
+		Node x = D.getChildAt(0);
+		Node e = D.getChildAt(1);
+		Node p = this.getChildAt(1).standardizedVersion();
 
 		LambdaNode ln = new LambdaNode(1);
 		ln.addChild(x);
@@ -23,6 +25,7 @@ public class LetNode extends Node {
 
 		replacement.addChild(ln);
 		replacement.addChild(e);
+
 	}
 	
 }

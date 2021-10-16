@@ -27,7 +27,7 @@ public class NodeFactory {
             case "where": return new WhereNode(depth);
             case "within": return new WithinNode(depth);
             case "rec": return new RecNode(depth);
-            case "fcn_form": return new FcnFormNode(depth);
+            case "function_form": return new FcnFormNode(depth);
             case "and": return new AndNode(depth);
             case "@": return new InfixNode(depth);
             //case "lambda": return new LambdaNode(depth);
