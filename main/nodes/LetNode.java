@@ -15,8 +15,8 @@ public class LetNode extends Node {
 	public void attachStandardizedChildren(Node replacement) {
 
 		Node D = this.getChildAt(0).standardizedVersion();
-		Node x = D.getChildAt(0);
-		Node e = D.getChildAt(1);
+		Node x = D.getChildAt(0).standardizedVersion();
+		Node e = D.getChildAt(1).standardizedVersion();
 		Node p = this.getChildAt(1).standardizedVersion();
 
 		LambdaNode ln = new LambdaNode(1);

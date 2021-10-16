@@ -1,0 +1,1 @@
+let x = f 3 where f y = y + 7 in Print(x+10)

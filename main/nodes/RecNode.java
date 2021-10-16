@@ -15,8 +15,8 @@ public class RecNode extends Node {
 	public void attachStandardizedChildren(Node replacement) {
 
 		Node eq = this.getChildAt(0).standardizedVersion();
-		Node x = eq.getChildAt(0);
-		Node e = eq.getChildAt(1);
+		Node x = eq.getChildAt(0).standardizedVersion();
+		Node e = eq.getChildAt(1).standardizedVersion();
 
 		replacement.addChild(x);
 
