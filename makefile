@@ -17,7 +17,8 @@ CLASSES =  \
 	main/nodes/LetNode.java \
 	main/nodes/RecNode.java \
 	main/nodes/WhereNode.java \
-	main/nodes/WithinNode.java
+	main/nodes/WithinNode.java \
+	main/csemachine/machine.java
 
 default: classes
 

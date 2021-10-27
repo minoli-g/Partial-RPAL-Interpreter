@@ -4,7 +4,9 @@ import java.io.File;  // Import the File class
 import java.io.FileNotFoundException;  // Import this class to handle errors
 import java.util.Scanner;
 import java.util.ArrayList;
+
 import main.nodes.*;
+import main.csemachine.*;
 
 //Takes a AST and returns a logic tree of nodes
 
@@ -63,6 +65,9 @@ public class astreader {
 			Node newn = root.standardizedVersion();
 			newn.updateDepth();
 			newn.describe();
+
+			System.out.println("----------");
+			machine.traverse(newn);
 			
 			
 			

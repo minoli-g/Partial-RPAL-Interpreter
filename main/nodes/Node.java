@@ -39,6 +39,15 @@ public abstract class Node {
 		child.setParent(this); 
 		children.add(child); 
 	}
+
+	public ArrayList<String> traverse(ArrayList<String> al) {
+
+		al.add(this.getType());
+		for (Node n: children){
+			n.traverse(al);
+		}
+		return al;
+	}
 	
 	public void describe() {
 	
