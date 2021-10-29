@@ -2,15 +2,38 @@ package main.csemachine;
 
 import main.nodes.*;
 
+import java.util.HashMap;
+
 public class Environment{
 
-    private String name;
-    private HashMap<String,Object> map= new HashMap<String,Object>();
+    private int index;
+    private HashMap<String,Object> map;
+    private Environment parent;
 
-    public Environment(){ }
+    public Environment(){ 
+        map = new HashMap<String,Object>();
+    }
 
-    public Object lookUp(String identifier) {
-        return map.get(identifier);
+    public Environment(int index){
+        this.index = index;
+        map = new HashMap<String,Object>();
+    }
+
+    public void setParent(Environment parent) {
+        this.parent = parent;
+    }
+
+    public Object lookUp(String identifier) throws Exception {
+
+        if (map.containsKey(identifier)){
+            return map.get(identifier);
+        }
+        else if (parent != null) {
+            return parent.lookUp(identifier);
+        }
+        
+        throw new Exception("lookup failed");
+        
     }
 
     public void put(String identifier, Object value){

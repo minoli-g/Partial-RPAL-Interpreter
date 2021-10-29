@@ -18,7 +18,7 @@ public class ControlStructure {
         return controlStructure.pop();
     }
 
-    public Stack<ControlElement> getControlStructure(){
+    public Stack<ControlElement> getControlElements(){
         return controlStructure;
     }
 }

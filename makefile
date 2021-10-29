@@ -19,6 +19,7 @@ CLASSES =  \
 	main/nodes/WhereNode.java \
 	main/nodes/WithinNode.java \
 	main/csemachine/machine.java \
+	main/csemachine/Environment.java \
 	main/csemachine/ControlElement.java \
 	main/csemachine/ControlStructure.java \
 	main/csemachine/ControlStructureGroup.java \

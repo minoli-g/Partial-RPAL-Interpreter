@@ -86,11 +86,14 @@ public class ControlStructureGroup {
         }
     }
 
+    public ControlStructure getControlStructureAt(int index){
+        return group.get(index);
+    }
 
     public void display(){
         for (ControlStructure cs: group){
             
-            for (ControlElement ce: cs.getControlStructure()){
+            for (ControlElement ce: cs.getControlElements()){
                 System.out.println(ce.getType());
             }
 

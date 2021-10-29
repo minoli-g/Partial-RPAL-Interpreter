@@ -5,16 +5,41 @@ import java.util.Stack;
 
 import main.nodes.*;
 
-public class machine {
+public class Machine {
 
     private ControlStructureGroup csg;
 
-    public machine(){ csg = new ControlStructureGroup(); }
+    private Stack<ControlElement> control;
+    private Stack<ControlElement> stack;
 
-    public void display() {
-        csg.display();
+    public Machine(Node rootOfTree){ 
+
+        csg = new ControlStructureGroup();
+        csg.createControlStructure(rootOfTree);
+
+        control = new Stack<ControlElement>();
+        stack = new Stack<ControlElement>();
     }
 
+    // When you initialize the machine, it has the control structures and empty Control & Stack ready to go
+
+    public String evaluate(){
+
+        //Add first COntrol Structure to Control
+        addToControl(csg.getControlStructureAt(0),0);
+
+        //While COntrol is not empty, pop the last element and follow the rules to edit control and stack 
+
+        //return the last element on stack as a String 
+        return "";
+    }
+
+    public void addToControl(ControlStructure cs, int index){
+        control.push(new ExpElement(index));
+        for (ControlElement ce: cs.getControlElements()){
+            control.push(ce);
+        }
+    }
    
 
 

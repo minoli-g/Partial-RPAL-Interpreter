@@ -9,7 +9,12 @@ public class myrpal {
 		
 		//System.out.println("Donowl");
 		
-		astreader.read(args[0]);
+		try{
+			astreader.read(args[0]);
+		}
+		catch (Exception e){
+			e.printStackTrace();
+		}
 		
 		// try {
 			// File astFile = new File(args[0]);
