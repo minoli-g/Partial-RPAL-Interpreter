@@ -67,7 +67,11 @@ public class astreader {
 			newn.describe();
 
 			System.out.println("----------");
-			machine.traverse(newn);
+			//machine.traverse(newn);
+
+			ControlStructureGroup csg = new ControlStructureGroup();
+			csg.createControlStructure(newn);
+			csg.display();
 			
 			
 			

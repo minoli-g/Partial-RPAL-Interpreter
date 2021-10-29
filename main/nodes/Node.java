@@ -21,6 +21,10 @@ public abstract class Node {
 	}
 
 	public String getType() { return this.getClass().toString(); }
+
+	public ArrayList<Node> getChildren(){
+		return children;
+	}
 	
 	public int getNodeDepth() { return depth; }
 

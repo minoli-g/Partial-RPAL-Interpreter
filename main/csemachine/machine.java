@@ -7,6 +7,26 @@ import main.nodes.*;
 
 public class machine {
 
+    private ControlStructureGroup csg;
+
+    public machine(){ csg = new ControlStructureGroup(); }
+
+    public void display() {
+        csg.display();
+    }
+
+   
+
+
+
+
+
+
+
+
+
+
+
     public static void traverse(Node n){
         ArrayList<String> al = new ArrayList<String>();
         al = n.traverse(al);
