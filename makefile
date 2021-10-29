@@ -25,7 +25,8 @@ CLASSES =  \
 	main/csemachine/ControlStructureGroup.java \
 	main/csemachine/DeltaElement.java \
 	main/csemachine/LambdaElement.java \
-	main/csemachine/TauElement.java
+	main/csemachine/TauElement.java \
+	main/csemachine/ExpElement.java
 
 default: classes
 
