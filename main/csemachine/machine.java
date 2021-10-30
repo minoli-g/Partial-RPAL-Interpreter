@@ -64,13 +64,14 @@ public class Machine {
     public void displayControl(){
 
         for (ControlElement ce: control){
-            if (ce.getType()!="lambda") { System.out.println(ce.getType()); }
+            if (ce.getType()!="lambda") { System.out.print(ce.getType()+"  "); }
             else { 
                     LambdaElement le = (LambdaElement) ce;
-                    System.out.println("Lambda " + le.getBindings().toString()); }
+                    System.out.print("Lambda " +
+                    Integer.toString(le.getIndex()) + le.getBindings().toString() + "  "); }
             }
 
-            System.out.println("***");
+            System.out.println("");
     }
 
 }
