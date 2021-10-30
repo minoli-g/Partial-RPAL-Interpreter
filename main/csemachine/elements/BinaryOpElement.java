@@ -45,6 +45,12 @@ public class BinaryOpElement extends ControlElement {
                 ));
                 return;
 
+            case "**":
+                stack.push(new ControlElement(
+                    (int) Math.pow(rand1.getInteger(),rand2.getInteger())
+                ));
+                return;
+
             default:
                 return;
 
