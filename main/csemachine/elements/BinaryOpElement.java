@@ -105,6 +105,16 @@ public class BinaryOpElement extends ControlElement {
                 }
                 return;
 
+
+            case "or":
+                stack.push(new ControlElement(rand1.getBool() || rand2.getBool()));
+                return;
+
+            case "&":
+                stack.push(new ControlElement(rand1.getBool() && rand2.getBool()));
+                return;
+
+
             default:
                 return;
 

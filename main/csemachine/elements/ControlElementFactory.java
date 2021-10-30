@@ -13,6 +13,10 @@ public class ControlElementFactory {
 
         if (type.equals("Y")) { return new ControlElement("Y", true); }
 
+        if (type.equals("<true>")) { return new ControlElement(true); }
+        if (type.equals("<false>")) { return new ControlElement(false); }
+
+
         if (l>5){
 
             if (type.substring(0,4).equals("<ID:")) { return new IdentifierElement(type.substring(4,l-1)); }
