@@ -1,11 +1,11 @@
-package main.csemachine;
+package main.csemachine.elements;
 
 public class DeltaElement extends ControlElement {
 
     private int index;
 
     public DeltaElement(int index) {
-        super("delta");
+        super("delta",true);
         this.index = index;
     }
     

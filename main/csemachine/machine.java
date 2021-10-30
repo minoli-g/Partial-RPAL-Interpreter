@@ -1,5 +1,7 @@
 package main.csemachine;
 
+import main.csemachine.elements.*;
+
 import java.util.ArrayList;
 import java.util.Stack;
 
@@ -10,7 +12,7 @@ public class Machine {
     private ControlStructureGroup csg;
 
     private Stack<ControlElement> control;
-    private Stack<Object> stack;
+    private Stack<ControlElement> stack;
 
     private Environment currentEnvironment;
 
@@ -20,12 +22,38 @@ public class Machine {
         csg.createControlStructure(rootOfTree);
 
         control = new Stack<ControlElement>();
-        stack = new Stack<Object>();
+        stack = new Stack<ControlElement>();
         currentEnvironment = new Environment(0);
     }
 
-    // When you initialize the machine, it has the control structures and empty Control & Stack ready to go
+    public String evaluate() throws Exception {
 
+        //Add first Control Structure to Control
+        addToControl(csg.getControlStructureAt(0),0);
+
+        while (control.size()>0) {
+
+            ControlElement ce = control.pop();
+            ce.doWhenPopped(control, stack, currentEnvironment,0);
+        }
+    return "";
+    }
+
+    public void addToControl(ControlStructure cs, int index){
+
+        ExpElement env = new ExpElement(index);
+
+        control.push(env);
+        for (ControlElement ce: cs.getControlElements()){
+            control.push(ce);
+        }
+        stack.push(env);
+    }
+
+}
+
+    // When you initialize the machine, it has the control structures and empty Control & Stack ready to go
+/*
     public String evaluate() throws Exception{
 
         //Add first COntrol Structure to Control
@@ -171,3 +199,4 @@ public class Machine {
    }
 
 }
+*/

@@ -18,15 +18,22 @@ CLASSES =  \
 	main/nodes/RecNode.java \
 	main/nodes/WhereNode.java \
 	main/nodes/WithinNode.java \
-	main/csemachine/machine.java \
+	main/csemachine/Machine.java \
 	main/csemachine/Environment.java \
-	main/csemachine/ControlElement.java \
 	main/csemachine/ControlStructure.java \
 	main/csemachine/ControlStructureGroup.java \
-	main/csemachine/DeltaElement.java \
-	main/csemachine/LambdaElement.java \
-	main/csemachine/TauElement.java \
-	main/csemachine/ExpElement.java
+	main/csemachine/elements/BetaElement.java \
+	main/csemachine/elements/BinaryOpElement.java \
+	main/csemachine/elements/ControlElement.java \
+	main/csemachine/elements/ControlElementFactory.java \
+	main/csemachine/elements/DeltaElement.java \
+	main/csemachine/elements/GammaElement.java \
+	main/csemachine/elements/IdentifierElement.java \
+	main/csemachine/elements/LambdaElement.java \
+	main/csemachine/elements/TauElement.java \
+	main/csemachine/elements/UnaryOpElement.java \
+	main/csemachine/elements/ExpElement.java
+	
 
 default: classes
 

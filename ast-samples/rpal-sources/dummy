@@ -1,0 +1,1 @@
+let f x = Print(x + 8) in Print(Isdummy(f 6))

@@ -1,0 +1,1 @@
+let f x = Stem x in Print (f 'Happy')

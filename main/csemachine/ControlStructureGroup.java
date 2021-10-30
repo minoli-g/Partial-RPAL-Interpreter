@@ -1,5 +1,7 @@
 package main.csemachine;
 
+import main.csemachine.elements.*;
+
 import main.nodes.Node;
 
 import java.util.ArrayList;
@@ -14,7 +16,7 @@ public class ControlStructureGroup {
         this.lastAddedIndex = -1;
     }
 
-    public int createControlStructure(Node n) {
+    public int createControlStructure(Node n) throws Exception {
 
         ControlStructure cs = new ControlStructure();
         group.add(cs);
@@ -25,7 +27,7 @@ public class ControlStructureGroup {
 
     }
 
-    public void addToControlStructure(ControlStructure cs, Node n) {
+    public void addToControlStructure(ControlStructure cs, Node n) throws Exception {
 
         switch (n.getType()) {
 
@@ -37,7 +39,7 @@ public class ControlStructureGroup {
                 cs.addElement(new DeltaElement(thenDelta));
                 cs.addElement(new DeltaElement(elseDelta));
 
-                cs.addElement(new ControlElement("beta"));
+                cs.addElement(new BetaElement());
 
                 //add the condition being evaluated to CS
                 addToControlStructure(cs, n.getChildAt(0));
@@ -66,7 +68,7 @@ public class ControlStructureGroup {
                     ArrayList<Node> identifiers = n.getChildAt(0).getChildren();
 
                     for (Node idNode: identifiers){
-                        ControlElement ce = new ControlElement(idNode.getType());
+                        ControlElement ce = ControlElementFactory.createElement(idNode);
                         bindings.add(ce.getIdName());
 
                         //bindings.add(idNode.getType());
@@ -75,7 +77,7 @@ public class ControlStructureGroup {
                 else {
                     //bindings.add(n.getChildAt(0).getType());
 
-                    ControlElement ce = new ControlElement(n.getChildAt(0).getType());
+                    ControlElement ce = ControlElementFactory.createElement(n.getChildAt(0));
                     bindings.add(ce.getIdName());
                 }
 
@@ -88,16 +90,31 @@ public class ControlStructureGroup {
                 break;
 
 
+            default: 
+
+                cs.addElement(ControlElementFactory.createElement(n));
+
+                for (Node child: n.getChildren()){
+                    addToControlStructure(cs, child);
+                }
+
+                break;
+
+            /* this is the part that must be handled by the factory
+            case "gamma":
+                cs.addElement(new GammaElement());
+                break;
 
             default:
-                cs.addElement(new ControlElement(n.getType()));
+            //identifiers or values or unops/binops
+                cs.addElement(new ControlElement(n));
 
                 //add all children to CS
                 for (Node child: n.getChildren()){
                     addToControlStructure(cs, child);
                 }
                 break;
-                
+                */
         }
     }
 
