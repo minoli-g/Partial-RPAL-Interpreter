@@ -16,7 +16,7 @@ public class Machine {
 
     private Environment currentEnvironment;
 
-    public Machine(Node rootOfTree){ 
+    public Machine(Node rootOfTree) throws Exception { 
 
         csg = new ControlStructureGroup();
         csg.createControlStructure(rootOfTree);
@@ -26,28 +26,51 @@ public class Machine {
         currentEnvironment = new Environment(0);
     }
 
-    public String evaluate() throws Exception {
+    public ControlElement evaluate() throws Exception {
 
-        //Add first Control Structure to Control
-        addToControl(csg.getControlStructureAt(0),0);
-
-        while (control.size()>0) {
-
-            ControlElement ce = control.pop();
-            ce.doWhenPopped(control, stack, currentEnvironment,0);
-        }
-    return "";
-    }
-
-    public void addToControl(ControlStructure cs, int index){
-
-        ExpElement env = new ExpElement(index);
-
+        ExpElement env = new ExpElement(0); //to denote principal env
         control.push(env);
-        for (ControlElement ce: cs.getControlElements()){
+
+        for (ControlElement ce: csg.getControlStructureAt(0).getControlElements()){
             control.push(ce);
         }
         stack.push(env);
+
+        //Control - e0 delta0, Stack - e0
+
+        while (control.size()>0) {
+
+            displayControl();
+            ControlElement ce = control.pop();
+            ce.doWhenPopped(this);
+
+        }
+        return stack.pop();
+    }
+
+    public Stack<ControlElement> getControl() { return control; }
+    public Stack<ControlElement> getStack() {   return stack;   }
+    public Environment getEnvironment() { return currentEnvironment; }
+    public void setEnvironment(Environment env) { currentEnvironment = env; }
+
+
+    public void addStructureToControl(int index){
+
+        for (ControlElement ce: csg.getControlStructureAt(index).getControlElements()){
+            control.push(ce);
+        }
+    }
+
+    public void displayControl(){
+
+        for (ControlElement ce: control){
+            if (ce.getType()!="lambda") { System.out.println(ce.getType()); }
+            else { 
+                    LambdaElement le = (LambdaElement) ce;
+                    System.out.println("Lambda " + le.getBindings().toString()); }
+            }
+
+            System.out.println("***");
     }
 
 }

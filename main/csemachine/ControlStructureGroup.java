@@ -18,11 +18,12 @@ public class ControlStructureGroup {
 
     public int createControlStructure(Node n) throws Exception {
 
+        lastAddedIndex++;
+
         ControlStructure cs = new ControlStructure();
         group.add(cs);
         addToControlStructure(cs, n);
 
-        lastAddedIndex++;
         return lastAddedIndex;
 
     }
@@ -129,7 +130,8 @@ public class ControlStructureGroup {
                 if (ce.getType()!="lambda") { System.out.println(ce.getType()); }
                 else { 
                     LambdaElement le = (LambdaElement) ce;
-                    System.out.println("Lambda " + le.getBindings().toString()); }
+                    System.out.println("Lambda " +
+                    Integer.toString(le.getIndex()) + le.getBindings().toString()); }
             }
 
             System.out.println("***");

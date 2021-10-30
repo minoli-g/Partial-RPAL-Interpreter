@@ -12,9 +12,10 @@ public class BinaryOpElement extends ControlElement {
     }
 
     @Override
-    public void doWhenPopped(Stack<ControlElement> control, Stack<ControlElement> stack, 
-                            Environment env, int envIndex)
-    {
+    public void doWhenPopped(Machine machine){
+
+        Stack<ControlElement> stack = machine.getStack();
+
         ControlElement rand1 = stack.pop();
         ControlElement rand2 = stack.pop();
         

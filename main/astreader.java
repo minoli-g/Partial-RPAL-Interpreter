@@ -64,18 +64,20 @@ public class astreader {
 			System.out.println("----------");
 			Node newn = root.standardizedVersion();
 			newn.updateDepth();
-			newn.describe();
+			//newn.describe();
 
 			System.out.println("----------");
-			//machine.traverse(newn);
 
-			ControlStructureGroup csg = new ControlStructureGroup();
-			csg.createControlStructure(newn);
-			csg.display();
+			//ControlStructureGroup csg = new ControlStructureGroup();
+			//csg.createControlStructure(newn);
+			//csg.display();
+
+
+			Machine m = new Machine(newn);
+			m.evaluate();
 			
 			
-			
-		} catch (FileNotFoundException e) {
+		} catch (Exception e) {
 			System.out.println("Error");
 			e.printStackTrace();
 		}

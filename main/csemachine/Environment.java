@@ -1,5 +1,6 @@
 package main.csemachine;
 
+import main.csemachine.elements.*;
 import main.nodes.*;
 
 import java.util.HashMap;
@@ -7,16 +8,16 @@ import java.util.HashMap;
 public class Environment{
 
     private int index;
-    private HashMap<String,Object> map;
+    private HashMap<String,ControlElement> map;
     private Environment parent;
 
     public Environment(){ 
-        map = new HashMap<String,Object>();
+        map = new HashMap<String,ControlElement>();
     }
 
     public Environment(int index){
         this.index = index;
-        map = new HashMap<String,Object>();
+        map = new HashMap<String,ControlElement>();
     }
 
     public int getIndex() { return index; }
@@ -25,7 +26,7 @@ public class Environment{
         this.parent = parent;
     }
 
-    public Object lookUp(String identifier) throws Exception {
+    public ControlElement lookUp(String identifier) {
 
         if (map.containsKey(identifier)){
             return map.get(identifier);
@@ -33,12 +34,12 @@ public class Environment{
         else if (parent != null) {
             return parent.lookUp(identifier);
         }
-        
-        throw new Exception("lookup failed");
+        return new ControlElement();
+        //throw new Exception("lookup failed");
         
     }
 
-    public void put(String identifier, Object value){
+    public void put(String identifier, ControlElement value){
         map.put(identifier,value);
         return;
     }

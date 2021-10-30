@@ -15,12 +15,13 @@ public class ControlElement {
     private boolean boolValue;
     private ArrayList<ControlElement> tuple;
 
+    /*
     public ControlElement(Node n){
 
-        /* 
-        if it's something with <>, assign correct type - identifer/string/int/boolean
-        anything else: store the string - will be used by subclasses to store subclass type
-        */
+         
+        //if it's something with <>, assign correct type - identifer/string/int/boolean
+        //anything else: store the string - will be used by subclasses to store subclass type
+        
 
         String type = n.getType();
 
@@ -54,6 +55,7 @@ public class ControlElement {
         return;
 
     }
+    */
 
     public ControlElement(String s, boolean isType){
         if (isType) {
@@ -102,11 +104,10 @@ public class ControlElement {
     public int getInteger(){ return intValue; }
     public boolean getBool(){ return boolValue; }
 
-    public void doWhenPopped(Stack<ControlElement> control, Stack<ControlElement> stack, 
-                            Environment env, int envIndex)
+    public void doWhenPopped(Machine machine)
     {
 
-        stack.push(this);  //Default behaviour - Done for names, int/str/bools, and Ystar
+        machine.getStack().push(this);  //Default behaviour - Done for names, int/str/bools, and Ystar
         return;
 
     }
@@ -125,6 +126,13 @@ public class ControlElement {
             default:
                 return type;
         }
+    }
+
+    public void print(){
+        if (strValue !=null){   System.out.println(strValue);   }
+        if (type.equals("INT")){   System.out.println(Integer.toString(intValue)); }
+        if (type.equals("BOOL")){  System.out.println("bool"); }
+        if (type.equals("DUMMY")){  System.out.println("dummy"); }
     }
 
 }

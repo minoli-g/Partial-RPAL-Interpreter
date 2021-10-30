@@ -25,11 +25,12 @@ public class LambdaElement extends ControlElement {
         return bindings;
     }
 
+    public int getIndex() { return index; }
+
     @Override
-    public void doWhenPopped(Stack<ControlElement> control, Stack<ControlElement> stack, 
-                            Environment env, int envIndex)
+    public void doWhenPopped(Machine machine)
     {
-        this.setEnvironment(envIndex);
-        stack.push(this);
+        this.setEnvironment(machine.getEnvironment().getIndex());
+        machine.getStack().push(this);
     }
 }

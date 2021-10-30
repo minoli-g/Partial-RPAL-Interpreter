@@ -13,11 +13,29 @@ public class IdentifierElement extends ControlElement {
     }
 
     @Override
-    public void doWhenPopped(Stack<ControlElement> control, Stack<ControlElement> stack, 
-                            Environment env, int envIndex)
-    {
+    public void doWhenPopped(Machine machine){
+
+        Stack<ControlElement> stack = machine.getStack();
+        Environment env = machine.getEnvironment();
 
         //if reserved, just push and let gamma handle it. Else, look it up in env and push.
+        if (isReserved(this.strValue)){
+            stack.push(this);
+            return;
+        }
+        stack.push(env.lookUp(this.strValue)); //it will be a ControlElement and not IDentiferElement
         
+    }
+
+    public static boolean isReserved(String identifier){
+
+        String[] reservedIdentifiers = {"Print"};
+
+        for (String s: reservedIdentifiers) {
+            if (identifier.equals(s)){
+                return true;
+            }
+        }
+        return false;
     }
 }
