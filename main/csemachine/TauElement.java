@@ -8,4 +8,5 @@ public class TauElement extends ControlElement {
         super("tau");
         this.number = number; }
     
+    public int getNumberOfElements(){ return number; }
 }

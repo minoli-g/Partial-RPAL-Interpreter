@@ -16,4 +16,8 @@ public class LambdaElement extends ControlElement {
     public void setEnvironment(int environment){
         this.environment = environment;
     }
+
+    public ArrayList<String> getBindings(){
+        return bindings;
+    }
 }

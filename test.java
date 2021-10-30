@@ -1,9 +1,11 @@
-import main.nodes.NodeFactory;
-import main.nodes.Node;
+import java.util.ArrayList;
 
-public class Test {
+public class test {
     public static void main (String[] args) {
-        Node a = NodeFactory.createNode("let",2);
-        System.out.println(Integer.toString(a.getNodeDepth()));
+        ArrayList<String> al = new ArrayList<String>();
+        al.add("hey");
+        al.add("bee");
+        al.add("jaja");
+        System.out.println(al.toString());
     }
 }

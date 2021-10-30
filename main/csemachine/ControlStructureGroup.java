@@ -44,6 +44,8 @@ public class ControlStructureGroup {
 
                 break;
 
+
+
             case "tau":
                 //add the tau with number of children
                 cs.addElement(new TauElement(n.numberOfChildren()));
@@ -54,16 +56,27 @@ public class ControlStructureGroup {
                 }
                 break;
 
+
+
             case "lambda":
                 //add the lambda expression with index and bindings
-                ArrayList<Node> identifiers = n.getChildAt(0).getChildren();
                 ArrayList<String> bindings = new ArrayList<String>();
 
-                for (Node idNode: identifiers){
-                    //ControlElement ce = new ControlElement(idNode.getType());
-                    //bindings.add(ce.getIdName);
+                if(n.getChildAt(0).getType()==",") {
+                    ArrayList<Node> identifiers = n.getChildAt(0).getChildren();
 
-                    bindings.add(idNode.getType());
+                    for (Node idNode: identifiers){
+                        ControlElement ce = new ControlElement(idNode.getType());
+                        bindings.add(ce.getIdName());
+
+                        //bindings.add(idNode.getType());
+                    }
+                }
+                else {
+                    //bindings.add(n.getChildAt(0).getType());
+
+                    ControlElement ce = new ControlElement(n.getChildAt(0).getType());
+                    bindings.add(ce.getIdName());
                 }
 
                 //create new CS with Lambda's right child.
@@ -73,6 +86,8 @@ public class ControlStructureGroup {
                 cs.addElement(new LambdaElement(bindings,newLambda));
 
                 break;
+
+
 
             default:
                 cs.addElement(new ControlElement(n.getType()));
@@ -94,7 +109,10 @@ public class ControlStructureGroup {
         for (ControlStructure cs: group){
             
             for (ControlElement ce: cs.getControlElements()){
-                System.out.println(ce.getType());
+                if (ce.getType()!="lambda") { System.out.println(ce.getType()); }
+                else { 
+                    LambdaElement le = (LambdaElement) ce;
+                    System.out.println("Lambda " + le.getBindings().toString()); }
             }
 
             System.out.println("***");

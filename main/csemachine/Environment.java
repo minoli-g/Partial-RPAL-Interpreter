@@ -19,6 +19,8 @@ public class Environment{
         map = new HashMap<String,Object>();
     }
 
+    public int getIndex() { return index; }
+
     public void setParent(Environment parent) {
         this.parent = parent;
     }

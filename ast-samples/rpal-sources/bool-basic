@@ -1,0 +1,3 @@
+let f x = x eq 0 -> true | false in
+let g x y = f(x) -> 10 | 20 in
+Print(g 0 50)
