@@ -64,6 +64,7 @@ public class Machine {
     public void displayControl(){
 
         for (ControlElement ce: control){
+            if (ce.getType().equals("bool")){ System.out.println(ce.getBool()); }
             if (ce.getType()!="lambda") { System.out.print(ce.getType()+"  "); }
             else { 
                     LambdaElement le = (LambdaElement) ce;

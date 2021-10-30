@@ -131,7 +131,7 @@ public class ControlElement {
     public void print(){
         if (strValue !=null){   System.out.println(strValue);   }
         if (type.equals("INT")){   System.out.println(Integer.toString(intValue)); }
-        if (type.equals("BOOL")){  System.out.println("bool"); }
+        if (type.equals("BOOL")){  System.out.println(Boolean.toString(boolValue)); }
         if (type.equals("DUMMY")){  System.out.println("dummy"); }
     }
 

@@ -51,6 +51,60 @@ public class BinaryOpElement extends ControlElement {
                 ));
                 return;
 
+            case "gr":
+                if (rand1.getInteger() > rand2.getInteger()) {
+                    stack.push(new ControlElement(true));
+                }
+                else {
+                    stack.push(new ControlElement(false));
+                }
+                return;
+
+            case "ge":
+                if (rand1.getInteger() >= rand2.getInteger()) {
+                    stack.push(new ControlElement(true));
+                }
+                else {
+                    stack.push(new ControlElement(false));
+                }
+                return;
+
+            case "ls":
+                if (rand1.getInteger() < rand2.getInteger()) {
+                    stack.push(new ControlElement(true));
+                }
+                else {
+                    stack.push(new ControlElement(false));
+                }
+                return;
+
+            case "le":
+                if (rand1.getInteger() <= rand2.getInteger()) {
+                    stack.push(new ControlElement(true));
+                }
+                else {
+                    stack.push(new ControlElement(false));
+                }
+                return;
+
+            case "eq":
+                if (rand1.getInteger() == rand2.getInteger()) {
+                    stack.push(new ControlElement(true));
+                }
+                else {
+                    stack.push(new ControlElement(false));
+                }
+                return;
+
+            case "ne":
+                if (rand1.getInteger() != rand2.getInteger()) {
+                    stack.push(new ControlElement(true));
+                }
+                else {
+                    stack.push(new ControlElement(false));
+                }
+                return;
+
             default:
                 return;
 
