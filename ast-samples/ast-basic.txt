@@ -1,5 +1,4 @@
 gamma
 .<ID:Print>
-.or
-..<true>
-..<false>
+.neg
+..<INT:3>

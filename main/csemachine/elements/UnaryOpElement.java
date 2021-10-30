@@ -12,13 +12,27 @@ public class UnaryOpElement extends ControlElement {
         super(type,true);
     }
 
-    // @Override
-    // public void doWhenPopped(Stack<ControlElement> control, Stack<ControlElement> stack, 
-    //                         Environment env, int envIndex)
-    // {
-    //     switch (type) {
-            
-    //     }
-    // }
+    @Override
+    public void doWhenPopped(Machine machine){
 
+        Stack<ControlElement> stack = machine.getStack();
+
+        ControlElement rand = stack.pop();
+
+        switch (type){
+
+            case "not":
+                if (!rand.getBool()) {  stack.push(new ControlElement(true));   }
+                else {  stack.push(new ControlElement(false));   }
+                return;
+
+            case "neg":
+                stack.push(new ControlElement(-1* rand.getInteger()));
+                return;
+
+            default:
+                return;
+
+        }
+    }
 }
