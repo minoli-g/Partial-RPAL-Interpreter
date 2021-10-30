@@ -22,8 +22,27 @@ public class BinaryOpElement extends ControlElement {
         switch (type){
 
             case "+":
-                int result = rand1.getInteger() + rand2.getInteger();
-                stack.push(new ControlElement(result));
+                stack.push(new ControlElement(
+                    rand1.getInteger() + rand2.getInteger()
+                ));
+                return;
+
+            case "-":
+                stack.push(new ControlElement(
+                    rand1.getInteger() - rand2.getInteger()
+                ));
+                return;
+
+            case "*":
+                stack.push(new ControlElement(
+                    rand1.getInteger() * rand2.getInteger()
+                ));
+                return;
+
+            case "/":
+                stack.push(new ControlElement(
+                    rand1.getInteger() / rand2.getInteger()
+                ));
                 return;
 
             default:
