@@ -19,12 +19,13 @@ public class ControlStructureGroup {
     public int createControlStructure(Node n) throws Exception {
 
         lastAddedIndex++;
+        int thisStructIndex = lastAddedIndex;
 
         ControlStructure cs = new ControlStructure();
         group.add(cs);
         addToControlStructure(cs, n);
 
-        return lastAddedIndex;
+        return thisStructIndex;
 
     }
 

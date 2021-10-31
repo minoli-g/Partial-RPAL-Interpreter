@@ -1,4 +1,11 @@
-gamma
-.<ID:Print>
-.neg
-..<INT:3>
+let
+.function_form
+..<ID:f>
+..<ID:x>
+..neg
+...<ID:x>
+.gamma
+..<ID:Print>
+..gamma
+...<ID:f>
+...<INT:5>
