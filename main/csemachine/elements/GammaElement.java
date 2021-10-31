@@ -59,6 +59,14 @@ public class GammaElement extends ControlElement {
             return;
         }
 
+        if (stackTop.getType().equals("TUPLE")){
+
+            int i = stack.pop().getInteger();
+            ControlElement ce = stackTop.getTuple().get(i-1);  //Indexing in RPAL starts at 1
+
+            stack.push(ce);
+        }
+
         if (stackTop instanceof IdentifierElement){
 
             IdentifierElement ie = (IdentifierElement) stackTop;
