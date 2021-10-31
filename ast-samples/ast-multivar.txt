@@ -2,11 +2,14 @@ let
 .function_form
 ..<ID:f>
 ..<ID:x>
+..<ID:y>
 ..+
 ...<ID:x>
-...<INT:3>
+...<ID:y>
 .gamma
 ..<ID:Print>
 ..gamma
-...<ID:f>
-...<INT:4>
+...gamma
+....<ID:f>
+....<INT:4>
+...<INT:5>
