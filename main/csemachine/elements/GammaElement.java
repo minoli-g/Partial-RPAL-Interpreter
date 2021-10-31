@@ -67,6 +67,7 @@ public class GammaElement extends ControlElement {
                     }
                     else{
                         stack.push(new ControlElement(false));
+                        return;
                     }
 
                 default:
