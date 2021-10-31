@@ -9,22 +9,20 @@ public class TauElement extends ControlElement {
 
     private int number;
 
-    private ArrayList<ControlElement> tuple; 
-
     public TauElement(int number) { 
         super("tau",true);
         this.number = number; 
-        tuple = new ArrayList<ControlElement>();
     }
 
     @Override
-    public void doWhenPopped(Stack<ControlElement> control, Stack<ControlElement> stack, 
-                            Environment env, int envIndex)
+    public void doWhenPopped(Machine machine)
     {
         //Create a tuple out of last few elements on stack and push 
+        ArrayList<ControlElement> tuple = new ArrayList<ControlElement>();
+        Stack<ControlElement> stack = machine.getStack();
 
         for (int i=0; i<number; i++){   tuple.add(stack.pop());  }
 
-        stack.push(this);
+        stack.push(new ControlElement(tuple));
     }
 }

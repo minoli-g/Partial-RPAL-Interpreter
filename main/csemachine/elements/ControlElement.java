@@ -15,47 +15,6 @@ public class ControlElement {
     private boolean boolValue;
     private ArrayList<ControlElement> tuple;
 
-    /*
-    public ControlElement(Node n){
-
-         
-        //if it's something with <>, assign correct type - identifer/string/int/boolean
-        //anything else: store the string - will be used by subclasses to store subclass type
-        
-
-        String type = n.getType();
-
-        if (type.length()>=4) {
-
-            switch (type.substring(0,4)){
-
-                case "<ID:":
-                    this.type = "ID"; this.strValue = type.substring(4,type.length()-1);
-                    return;
-
-                case "<INT":
-                    this.type = "INT"; this.intValue = Integer.parseInt(type.substring(5,type.length()-1));
-                    return;
-
-                case "<STR":
-                    this.type = "STR"; this.strValue = type.substring(5,type.length()-1);
-                    return;
-
-                default:
-                    break;
-            }
-        }
-        
-        if (type.equals("<true>")){ this.type = "BOOL"; this.boolValue = true; }
-        else if (type.equals("<false>")) { this.type = "BOOL"; this.boolValue = false; }
-
-        else {
-            this.type = type;
-        }
-        return;
-
-    }
-    */
 
     public ControlElement(String s, boolean isType){
         if (isType) {
@@ -113,28 +72,24 @@ public class ControlElement {
     }
 
     public String getType(){ return type; }
-        /*
-        switch (type){
-            case "INT":
-                return ("INT: "+Integer.toString(intValue));
 
-            case "STR":
-                return (type+": "+strValue);
-
-            case "ID":
-                return (type + ": " + strValue);
-
-            default:
-                return type;
+    public String returnBaseValue(){
+        switch (type) {
+            case "STR": return strValue;
+            case "INT": return Integer.toString(intValue);
+            case "BOOL": return Boolean.toString(boolValue);
+            case "DUMMY": return "dummy";
+            case "TUPLE": 
+                ArrayList<String> list = new ArrayList<String>();
+                for (ControlElement ce: this.tuple) { list.add(ce.returnBaseValue()); }
+                return ( "(" + String.join(", ",list) + ")" );
         }
+        return "Error - returnBaseValue can't handle this";
     }
-    */
 
     public void print(){
-        if (strValue !=null){   System.out.println(strValue);   }
-        if (type.equals("INT")){   System.out.println(Integer.toString(intValue)); }
-        if (type.equals("BOOL")){  System.out.println(Boolean.toString(boolValue)); }
-        if (type.equals("DUMMY")){  System.out.println("dummy"); }
+        System.out.println(returnBaseValue());
     }
+
 
 }

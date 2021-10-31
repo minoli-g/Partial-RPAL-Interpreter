@@ -1,5 +1,9 @@
 gamma
 .<ID:Print>
-.gamma
-..<ID:Isstring>
-..<STR:'Happy'>
+.tau
+..<INT:3>
+..<INT:4>
+..<INT:7>
+..tau
+...<INT:8>
+...<INT:9>
