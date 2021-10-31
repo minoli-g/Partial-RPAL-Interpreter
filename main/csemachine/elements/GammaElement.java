@@ -52,13 +52,22 @@ public class GammaElement extends ControlElement {
         if (stackTop instanceof IdentifierElement){
 
             IdentifierElement ie = (IdentifierElement) stackTop;
-            ControlElement ce = machine.getStack().pop();
+            ControlElement ce = stack.pop();
 
             switch (ie.getIdName()){
                 case "Print":
                     ce.print();
-                    machine.getStack().push(new ControlElement()); //dummy
+                    stack.push(new ControlElement()); //dummy
                     return;
+
+                case "Isdummy":
+                    if (ce.getType().equals("DUMMY")){
+                        stack.push(new ControlElement(true));
+                        return;
+                    }
+                    else{
+                        stack.push(new ControlElement(false));
+                    }
 
                 default:
                     return;
