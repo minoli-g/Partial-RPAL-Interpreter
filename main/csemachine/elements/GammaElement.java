@@ -34,11 +34,23 @@ public class GammaElement extends ControlElement {
             machine.addStructureToControl(le.getIndex());
 
             //Create new environment binding lambda's bindings to rand
-            //Temporary - for single binding
-
-            String identifier = le.getBindings().get(0);
             Environment newEnv = new Environment(currentEnvironment);
-            newEnv.put(identifier,rand);
+
+            ArrayList<String> bindings = le.getBindings();
+
+            if (bindings.size()==1) { 
+            //for single binding
+
+                String identifier = le.getBindings().get(0);
+                newEnv.put(identifier,rand);
+            }
+            else {
+                ArrayList<ControlElement> tuple = rand.getTuple();
+
+                for (int i=0; i<bindings.size(); i++) {
+                    newEnv.put(bindings.get(i),tuple.get(i));
+                }
+            }
 
             Environment oldEnv = machine.getEnvironment();
             newEnv.setParent(oldEnv);

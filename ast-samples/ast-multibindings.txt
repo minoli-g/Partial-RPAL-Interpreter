@@ -7,7 +7,7 @@ let
 ...<ID:y>
 ...<INT:4>
 ..=
-...<ID:z>
+...<ID:zambia>
 ...<INT:7>
 .gamma
 ..<ID:Print>
@@ -15,4 +15,4 @@ let
 ...+
 ....<ID:x>
 ....<ID:y>
-...<ID:z>
+...<ID:zambia>

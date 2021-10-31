@@ -62,6 +62,7 @@ public class ControlElement {
     public String getString(){ return strValue; }
     public int getInteger(){ return intValue; }
     public boolean getBool(){ return boolValue; }
+    public ArrayList<ControlElement> getTuple() { return tuple; }
 
     public void doWhenPopped(Machine machine)
     {
