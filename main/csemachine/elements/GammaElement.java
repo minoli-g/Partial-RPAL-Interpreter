@@ -17,8 +17,6 @@ public class GammaElement extends ControlElement {
     {
 
         Stack<ControlElement> stack = machine.getStack();
-        
-
         ControlElement stackTop = stack.pop();
 
         if (stackTop instanceof LambdaElement) {
@@ -69,6 +67,38 @@ public class GammaElement extends ControlElement {
                         stack.push(new ControlElement(false));
                         return;
                     }
+
+                case "Isinteger":
+                    if (ce.getType().equals("INT")){
+                        stack.push(new ControlElement(true));
+                        return;
+                    }
+                    else{
+                        stack.push(new ControlElement(false));
+                        return;
+                    }
+
+                case "Istruthvalue":
+                    if (ce.getType().equals("BOOL")){
+                        stack.push(new ControlElement(true));
+                        return;
+                    }
+                    else{
+                        stack.push(new ControlElement(false));
+                        return;
+                    }
+
+                case "Isstring":
+                    if (ce.getType().equals("STR")){
+                        stack.push(new ControlElement(true));
+                        return;
+                    }
+                    else{
+                        stack.push(new ControlElement(false));
+                        return;
+                    }
+
+                //should do isfunction and istuple
 
                 default:
                     return;

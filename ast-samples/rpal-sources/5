@@ -1,1 +1,1 @@
-Print (f 4) where f x = x + 3
+Print (Isstring('Happy'))

@@ -112,7 +112,8 @@ public class ControlElement {
 
     }
 
-    public String getType(){
+    public String getType(){ return type; }
+        /*
         switch (type){
             case "INT":
                 return ("INT: "+Integer.toString(intValue));
@@ -127,6 +128,7 @@ public class ControlElement {
                 return type;
         }
     }
+    */
 
     public void print(){
         if (strValue !=null){   System.out.println(strValue);   }

@@ -1,12 +1,5 @@
-where
+gamma
+.<ID:Print>
 .gamma
-..<ID:Print>
-..gamma
-...<ID:f>
-...<INT:4>
-.function_form
-..<ID:f>
-..<ID:x>
-..+
-...<ID:x>
-...<INT:3>
+..<ID:Isstring>
+..<STR:'Happy'>
