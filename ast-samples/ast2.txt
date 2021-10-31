@@ -1,7 +1,0 @@
-let
-.=
-..<ID:x>
-..<INT:3>
-.gamma
-..<ID:Print>
-..<ID:x>

@@ -1,0 +1,15 @@
+let
+.function_form
+..<ID:f>
+..<ID:x>
+..->
+...eq
+....<ID:x>
+....<INT:0>
+...<STR:'Zero'>
+...<STR:'Not zero'>
+.gamma
+..<ID:Print>
+..gamma
+...<ID:f>
+...<INT:3>

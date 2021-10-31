@@ -8,5 +8,7 @@ public class DeltaElement extends ControlElement {
         super("delta",true);
         this.index = index;
     }
+
+    public int getIndex() { return index; }
     
 }
