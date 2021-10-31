@@ -21,6 +21,7 @@ public class Environment{
     }
 
     public int getIndex() { return index; }
+    public Environment getParent() { return parent; }
 
     public void setParent(Environment parent) {
         this.parent = parent;

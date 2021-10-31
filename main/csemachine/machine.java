@@ -65,7 +65,8 @@ public class Machine {
 
         for (ControlElement ce: control){
             if (ce.getType().equals("bool")){ System.out.println(ce.getBool()); }
-            if (ce.getType()!="lambda") { System.out.print(ce.getType()+"  "); }
+            else if (ce.getType().equals("INT")){ System.out.print(ce.getInteger()); }
+            else if (ce.getType()!="lambda") { System.out.print(ce.getType()+"  "); }
             else { 
                     LambdaElement le = (LambdaElement) ce;
                     System.out.print("Lambda " +

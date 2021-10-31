@@ -21,11 +21,9 @@ public class LambdaElement extends ControlElement {
         this.environment = environment;
     }
 
-    public ArrayList<String> getBindings(){
-        return bindings;
-    }
-
     public int getIndex() { return index; }
+    public ArrayList<String> getBindings() {    return bindings;    }
+    public int getEnvironment() {   return environment;     }
 
     @Override
     public void doWhenPopped(Machine machine)

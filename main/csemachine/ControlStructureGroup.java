@@ -128,11 +128,18 @@ public class ControlStructureGroup {
         for (ControlStructure cs: group){
             
             for (ControlElement ce: cs.getControlElements()){
-                if (ce.getType()!="lambda") { System.out.println(ce.getType()); }
-                else { 
+                //if (ce.getType()!="lambda") { System.out.println(ce.getType()); }
+
+                if (ce.getType().equals("ID")) { System.out.println(ce.getIdName()); }
+                else if (ce.getType().equals("INT")) { System.out.println(ce.getInteger()); }
+
+                else if (ce instanceof LambdaElement) { 
                     LambdaElement le = (LambdaElement) ce;
                     System.out.println("Lambda " +
-                    Integer.toString(le.getIndex()) + le.getBindings().toString()); }
+                    Integer.toString(le.getIndex()) + le.getBindings().toString());
+                    
+                }
+                else {System.out.println(ce.getType());}
             }
 
             System.out.println("***");

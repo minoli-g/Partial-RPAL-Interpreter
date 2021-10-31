@@ -27,6 +27,7 @@ CLASSES =  \
 	main/csemachine/elements/ControlElement.java \
 	main/csemachine/elements/ControlElementFactory.java \
 	main/csemachine/elements/DeltaElement.java \
+	main/csemachine/elements/EtaElement.java \
 	main/csemachine/elements/GammaElement.java \
 	main/csemachine/elements/IdentifierElement.java \
 	main/csemachine/elements/LambdaElement.java \

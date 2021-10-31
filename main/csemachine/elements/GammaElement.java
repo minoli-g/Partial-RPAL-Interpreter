@@ -65,6 +65,28 @@ public class GammaElement extends ControlElement {
             ControlElement ce = stackTop.getTuple().get(i-1);  //Indexing in RPAL starts at 1
 
             stack.push(ce);
+            return;
+        }
+
+        if (stackTop.getType().equals("Y")){
+
+            LambdaElement le = (LambdaElement) stack.pop();
+            EtaElement ee = new EtaElement(le);
+
+            stack.push(ee);
+
+            return;
+        }
+
+        if (stackTop instanceof EtaElement) {
+
+            EtaElement ee = (EtaElement) stackTop;
+
+            machine.getControl().push(new GammaElement());
+            machine.getControl().push(new GammaElement());
+            stack.push(ee);
+            stack.push(ee.getLambdaElement());
+            return;
         }
 
         if (stackTop instanceof IdentifierElement){
