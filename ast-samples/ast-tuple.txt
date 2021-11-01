@@ -4,10 +4,12 @@ let
 ..tau
 ...<STR:'a'>
 ...<STR:'b'>
-...<false>
+...<true>
 ...<INT:3>
 .gamma
 ..<ID:Print>
 ..gamma
-...<ID:T>
-...<INT:3>
+...<ID:Istuple>
+...gamma
+....<ID:T>
+....<INT:3>

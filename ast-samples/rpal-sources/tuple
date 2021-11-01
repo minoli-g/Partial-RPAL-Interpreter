@@ -1,1 +1,1 @@
-let T=('a','b',true,3) in Print(T 3)
+let T=('a','b',true,3) in Print(Istuple (T 3))

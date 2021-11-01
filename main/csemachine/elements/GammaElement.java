@@ -159,7 +159,17 @@ public class GammaElement extends ControlElement {
                         return;
                     }
 
-                //should do isfunction and istuple
+                case "Istuple":
+                    if (ce.getType().equals("TUPLE")){
+                        stack.push(new ControlElement(true));
+                        return;
+                    }
+                    else{
+                        stack.push(new ControlElement(false));
+                        return;
+                    }
+
+                //should do isfunction
 
                 default:
                     return;
