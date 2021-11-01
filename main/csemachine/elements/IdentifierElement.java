@@ -31,7 +31,7 @@ public class IdentifierElement extends ControlElement {
 
         String[] reservedIdentifiers = {"Print", "Isdummy", "Isinteger", "Istruthvalue",
                                         "Isstring", "Isfunction", "Istuple", "Order", "Null",
-                                        "Stem", "Stern"};
+                                        "Stem", "Stern", "Conc"};
 
         for (String s: reservedIdentifiers) {
             if (identifier.equals(s)){

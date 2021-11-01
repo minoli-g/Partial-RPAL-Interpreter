@@ -128,6 +128,14 @@ public class GammaElement extends ControlElement {
                     stack.push(new ControlElement(str.substring(1,str.length()),false));
                     return;
 
+                case "Conc":
+                    ControlElement ce2 = stack.pop();
+                    stack.push(new ControlElement(ce.getString() + ce2.getString(), false));
+
+                    //Remove behind gamma from control
+                    machine.getControl().pop();
+                    return;
+
                 case "Isdummy":
                     if (ce.getType().equals("DUMMY")){
                         stack.push(new ControlElement(true));

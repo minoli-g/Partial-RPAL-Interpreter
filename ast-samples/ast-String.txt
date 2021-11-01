@@ -1,5 +1,7 @@
 gamma
 .<ID:Print>
 .gamma
-..<ID:Stern>
-..<STR:'Happy'>
+..gamma
+...<ID:Conc>
+...<STR:'Happy'>
+..<STR:'Sad'>
