@@ -10,25 +10,25 @@ public class LambdaElement extends ControlElement {
 
     private ArrayList<String> bindings;
     private int index;
-    private int environment; //this will be used on the stack only
+    private Environment env; 
 
     public LambdaElement(ArrayList<String> bindings, int index){
         super("lambda", true);
         this.bindings = bindings; this.index = index;
     }
 
-    public void setEnvironment(int environment){
-        this.environment = environment;
+    public void setEnvironment(Environment env){
+        this.env = env;
     }
 
     public int getIndex() { return index; }
     public ArrayList<String> getBindings() {    return bindings;    }
-    public int getEnvironment() {   return environment;     }
+    public Environment getEnvironment() {   return env;     }
 
     @Override
     public void doWhenPopped(Machine machine)
     {
-        this.setEnvironment(machine.getEnvironment().getIndex());
+        this.setEnvironment(machine.getEnvironment());
         machine.getStack().push(this);
     }
 }

@@ -24,18 +24,20 @@ public class GammaElement extends ControlElement {
             LambdaElement le = (LambdaElement) stackTop;
             ControlElement rand = stack.pop();
 
-            int currentEnvironment = machine.getEnvironment().getIndex();
-            currentEnvironment++;
+            int newLastEnvIndex = machine.getLastEnvIndex() + 1;
 
-            ExpElement en = new ExpElement(currentEnvironment);
+            //Create new environment binding lambda's bindings to rand
+            Environment newEnv = new Environment(newLastEnvIndex);
+
+            ExpElement en = new ExpElement(newEnv);
+
             machine.getControl().push(en);
-            machine.getStack().push(en);
+            stack.push(en);
 
             machine.addStructureToControl(le.getIndex());
 
-            //Create new environment binding lambda's bindings to rand
-            Environment newEnv = new Environment(currentEnvironment);
 
+            //Adding the bindings to the env
             ArrayList<String> bindings = le.getBindings();
 
             if (bindings.size()==1) { 
@@ -52,9 +54,11 @@ public class GammaElement extends ControlElement {
                 }
             }
 
-            Environment oldEnv = machine.getEnvironment();
+            Environment oldEnv = le.getEnvironment();
             newEnv.setParent(oldEnv);
+
             machine.setEnvironment(newEnv);
+            machine.setLastEnvIndex(newLastEnvIndex);
 
             return;
         }

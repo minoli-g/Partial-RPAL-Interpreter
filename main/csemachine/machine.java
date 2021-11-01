@@ -15,6 +15,7 @@ public class Machine {
     private Stack<ControlElement> stack;
 
     private Environment currentEnvironment;
+    private int lastEnvIndex;
 
     public Machine(Node rootOfTree) throws Exception { 
 
@@ -23,12 +24,15 @@ public class Machine {
 
         control = new Stack<ControlElement>();
         stack = new Stack<ControlElement>();
+
         currentEnvironment = new Environment(0);
+        lastEnvIndex = 0;
     }
 
     public ControlElement evaluate() throws Exception {
+        //Starts with an empty control
 
-        ExpElement env = new ExpElement(0); //to denote principal env
+        ExpElement env = new ExpElement(currentEnvironment); //principal env
         control.push(env);
 
         for (ControlElement ce: csg.getControlStructureAt(0).getControlElements()){
@@ -51,7 +55,10 @@ public class Machine {
     public Stack<ControlElement> getControl() { return control; }
     public Stack<ControlElement> getStack() {   return stack;   }
     public Environment getEnvironment() { return currentEnvironment; }
+    public int getLastEnvIndex() { return lastEnvIndex; }
+
     public void setEnvironment(Environment env) { currentEnvironment = env; }
+    public void setLastEnvIndex(int lastEnvIndex){ this.lastEnvIndex = lastEnvIndex;    }
 
 
     public void addStructureToControl(int index){
