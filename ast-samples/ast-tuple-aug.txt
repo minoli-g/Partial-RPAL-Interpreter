@@ -1,13 +1,9 @@
 let
 .=
 ..<ID:T>
-..tau
-...<INT:4>
-...<INT:5>
+..<nil>
 .gamma
 ..<ID:Print>
-..aug
+..gamma
+...<ID:Null>
 ...<ID:T>
-...tau
-....<INT:8>
-....<INT:9>

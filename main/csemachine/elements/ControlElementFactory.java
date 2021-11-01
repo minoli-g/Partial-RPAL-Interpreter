@@ -12,6 +12,7 @@ public class ControlElementFactory {
         if (type.equals("gamma")){ return new GammaElement(); }
 
         if (type.equals("Y")) { return new ControlElement("Y", true); }
+        if (type.equals("<nil>")) { return new ControlElement("<nil>", true); }
 
         if (type.equals("<true>")) { return new ControlElement(true); }
         if (type.equals("<false>")) { return new ControlElement(false); }

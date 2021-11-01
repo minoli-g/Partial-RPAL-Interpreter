@@ -30,7 +30,7 @@ public class IdentifierElement extends ControlElement {
     public static boolean isReserved(String identifier){
 
         String[] reservedIdentifiers = {"Print", "Isdummy", "Isinteger", "Istruthvalue",
-                                        "Isstring", "Isfunction", "Istuple"};
+                                        "Isstring", "Isfunction", "Istuple", "Order", "Null"};
 
         for (String s: reservedIdentifiers) {
             if (identifier.equals(s)){

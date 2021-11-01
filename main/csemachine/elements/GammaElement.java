@@ -104,6 +104,21 @@ public class GammaElement extends ControlElement {
                     stack.push(new ControlElement()); //dummy
                     return;
 
+                case "Order":
+                    int order = ce.getTuple().size();
+                    stack.push(new ControlElement(order));
+                    return;
+
+                case "Null":
+                    if (ce.getType().equals("<nil>")){
+                        stack.push(new ControlElement(true));
+                        return;
+                    }
+                    else{
+                        stack.push(new ControlElement(false));
+                        return;
+                    }
+
                 case "Isdummy":
                     if (ce.getType().equals("DUMMY")){
                         stack.push(new ControlElement(true));
