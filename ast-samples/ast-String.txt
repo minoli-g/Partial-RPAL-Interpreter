@@ -1,0 +1,5 @@
+gamma
+.<ID:Print>
+.gamma
+..<ID:Stern>
+..<STR:'Happy'>

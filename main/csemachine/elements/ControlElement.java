@@ -22,7 +22,7 @@ public class ControlElement {
             return;
         }
         type = "STR";
-        this.strValue = s;
+        this.strValue = s; //Removing the quotes
         return;
     }
 

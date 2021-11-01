@@ -119,6 +119,15 @@ public class GammaElement extends ControlElement {
                         return;
                     }
 
+                case "Stem":
+                    stack.push(new ControlElement(ce.getString().substring(0,1),false));
+                    return;
+
+                case "Stern":
+                    String str = ce.getString();
+                    stack.push(new ControlElement(str.substring(1,str.length()),false));
+                    return;
+
                 case "Isdummy":
                     if (ce.getType().equals("DUMMY")){
                         stack.push(new ControlElement(true));

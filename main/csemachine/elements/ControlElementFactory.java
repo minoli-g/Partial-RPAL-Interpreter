@@ -23,7 +23,7 @@ public class ControlElementFactory {
 
             if (type.substring(0,5).equals("<INT:")) { return new ControlElement(Integer.parseInt(type.substring(5,l-1))); }
 
-            if (type.substring(0,5).equals("<STR:")) { return new ControlElement(type.substring(5,l-1), false); }
+            if (type.substring(0,5).equals("<STR:")) { return new ControlElement(type.substring(6,l-2), false); }
 
         }
 
