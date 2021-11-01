@@ -1,10 +1,10 @@
 package main.csemachine;
 
 import main.csemachine.elements.*;
-
 import main.nodes.Node;
 
 import java.util.ArrayList;
+
 
 public class ControlStructureGroup {
 
@@ -18,6 +18,8 @@ public class ControlStructureGroup {
 
     public int createControlStructure(Node n) throws Exception {
 
+        /* Open a new Control Structure for the node */
+
         lastAddedIndex++;
         int thisStructIndex = lastAddedIndex;
 
@@ -30,6 +32,9 @@ public class ControlStructureGroup {
     }
 
     public void addToControlStructure(ControlStructure cs, Node n) throws Exception {
+
+        /* Add a node and its children to the Control Structure in the appropriate manner,
+        depending on node's type */
 
         switch (n.getType()) {
 
@@ -67,17 +72,18 @@ public class ControlStructureGroup {
                 ArrayList<String> bindings = new ArrayList<String>();
 
                 if(n.getChildAt(0).getType().equals(",")) {
+                    // Comma child indicates presence of multiple bindings
 
                     ArrayList<Node> identifiers = n.getChildAt(0).getChildren();
 
                     for (Node idNode: identifiers){
+
                         ControlElement ce = ControlElementFactory.createElement(idNode);
                         bindings.add(ce.getIdName());
 
-                        //bindings.add(idNode.getType());
                     }
                 }
-                else {
+                else {   //A Single binding
 
                     ControlElement ce = ControlElementFactory.createElement(n.getChildAt(0));
                     bindings.add(ce.getIdName());
@@ -86,13 +92,16 @@ public class ControlStructureGroup {
                 //create new CS with Lambda's right child.
                 int newLambda = createControlStructure(n.getChildAt(1));
 
-                //create new Lamba Element
+                /*create new Lambda Element with delta indicator newLambda
+                and add to current CS */
                 cs.addElement(new LambdaElement(bindings,newLambda));
 
                 break;
 
 
             default: 
+                /* For the elements who do not need special consideration
+                Simply add them and their children. */
 
                 cs.addElement(ControlElementFactory.createElement(n));
 
@@ -109,10 +118,13 @@ public class ControlStructureGroup {
     }
 
     public void display(){
+        /* Used for debugging purposes.
+        Displays the control structures with the type and other info of each element */
+
+
         for (ControlStructure cs: group){
             
             for (ControlElement ce: cs.getControlElements()){
-                //if (ce.getType()!="lambda") { System.out.println(ce.getType()); }
 
                 if (ce.getType().equals("ID")) { System.out.println(ce.getIdName()); }
                 else if (ce.getType().equals("INT")) { System.out.println(ce.getInteger()); }

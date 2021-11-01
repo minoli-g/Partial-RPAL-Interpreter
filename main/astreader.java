@@ -58,27 +58,9 @@ public class astreader {
 				
 				else { System.out.println("Error"); }
 				
-				//System.out.println(line);
 			}
 			
 			astReader.close();
-			//return root;
-
-
-			//System.out.println("----------");
-			// Node newn = root.standardizedVersion();
-			// newn.updateDepth();
-			// //newn.describe();
-
-			// System.out.println("----------");
-
-			// // ControlStructureGroup csg = new ControlStructureGroup();
-			// // csg.createControlStructure(newn);
-			// // csg.display();
-
-
-			// Machine m = new Machine(newn);
-			// m.evaluate();
 			
 			
 		} catch (Exception e) {
