@@ -30,14 +30,14 @@ public class ControlElementFactory {
 
         if (isBinaryOp(type)) { return new BinaryOpElement(type); }
 
-        else { throw new Exception("Incompatible type"); }
+        else { throw new Exception("Incompatible type " + type); }
     }
 
 
 
     public static boolean isBinaryOp(String operator){
 
-       String[] binops = {"+", "-", "*", "/", "**", "or", "&", "gr", "ge", "ls", "le", "eq", "ne"};
+       String[] binops = {"+", "-", "*", "/", "**", "or", "&", "gr", "ge", "ls", "le", "eq", "ne", "aug"};
        for (String s: binops){
            if (operator.equals(s)) { return true; }
        }

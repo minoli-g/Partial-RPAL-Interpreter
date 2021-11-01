@@ -1,0 +1,13 @@
+let
+.=
+..<ID:T>
+..tau
+...<INT:4>
+...<INT:5>
+.gamma
+..<ID:Print>
+..aug
+...<ID:T>
+...tau
+....<INT:8>
+....<INT:9>

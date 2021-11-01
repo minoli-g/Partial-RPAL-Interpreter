@@ -115,6 +115,13 @@ public class BinaryOpElement extends ControlElement {
                 return;
 
 
+            case "aug":
+                ArrayList<ControlElement> tuple = rand1.getTuple();
+                tuple.add(rand2);
+                stack.push(new ControlElement(tuple));
+                return;
+
+
             default:
                 return;
 
