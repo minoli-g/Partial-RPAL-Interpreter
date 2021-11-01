@@ -66,7 +66,8 @@ public class ControlStructureGroup {
                 //add the lambda expression with index and bindings
                 ArrayList<String> bindings = new ArrayList<String>();
 
-                if(n.getChildAt(0).getType()==",") {
+                if(n.getChildAt(0).getType().equals(",")) {
+
                     ArrayList<Node> identifiers = n.getChildAt(0).getChildren();
 
                     for (Node idNode: identifiers){
@@ -77,7 +78,6 @@ public class ControlStructureGroup {
                     }
                 }
                 else {
-                    //bindings.add(n.getChildAt(0).getType());
 
                     ControlElement ce = ControlElementFactory.createElement(n.getChildAt(0));
                     bindings.add(ce.getIdName());
@@ -101,22 +101,6 @@ public class ControlStructureGroup {
                 }
 
                 break;
-
-            /* this is the part that must be handled by the factory
-            case "gamma":
-                cs.addElement(new GammaElement());
-                break;
-
-            default:
-            //identifiers or values or unops/binops
-                cs.addElement(new ControlElement(n));
-
-                //add all children to CS
-                for (Node child: n.getChildren()){
-                    addToControlStructure(cs, child);
-                }
-                break;
-                */
         }
     }
 
