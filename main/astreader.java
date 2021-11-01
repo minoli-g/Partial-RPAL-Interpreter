@@ -13,20 +13,21 @@ import main.csemachine.*;
 
 public class astreader {
 	
-	private static int getDepth(String line) {
-		for (int i=0; i<line.length(); i++) {
-			if (line.charAt(i)!='.'){ return i; }
-		}
-		return -1;
-	}
-	
-	public static void read(String filename) {
+
+	public static Node read(String filename) {
+		/*
+		Takes the input file, 
+		Creates the logical AST and returns the root Node
+		*/
+
+		Node root = null;
+
 		try {
+
 			File astFile = new File(filename);
 			Scanner astReader = new Scanner(astFile);
 			
 			Node currentNode = null;
-			Node root = null;
 			int currentDepth = -1;
 			
 			while(astReader.hasNextLine()){
@@ -61,25 +62,37 @@ public class astreader {
 			}
 			
 			astReader.close();
-			System.out.println("----------");
-			Node newn = root.standardizedVersion();
-			newn.updateDepth();
-			//newn.describe();
-
-			System.out.println("----------");
-
-			// ControlStructureGroup csg = new ControlStructureGroup();
-			// csg.createControlStructure(newn);
-			// csg.display();
+			//return root;
 
 
-			Machine m = new Machine(newn);
-			m.evaluate();
+			//System.out.println("----------");
+			// Node newn = root.standardizedVersion();
+			// newn.updateDepth();
+			// //newn.describe();
+
+			// System.out.println("----------");
+
+			// // ControlStructureGroup csg = new ControlStructureGroup();
+			// // csg.createControlStructure(newn);
+			// // csg.display();
+
+
+			// Machine m = new Machine(newn);
+			// m.evaluate();
 			
 			
 		} catch (Exception e) {
 			System.out.println("Error");
 			e.printStackTrace();
 		}
+
+		return root;
+	}
+
+	private static int getDepth(String line) {
+		for (int i=0; i<line.length(); i++) {
+			if (line.charAt(i)!='.'){ return i; }
+		}
+		return -1;
 	}
 }
