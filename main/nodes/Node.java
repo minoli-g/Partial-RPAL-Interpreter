@@ -44,31 +44,6 @@ public abstract class Node {
 		children.add(child); 
 	}
 
-	public ArrayList<String> traverse(ArrayList<String> al) {
-
-		al.add(this.getType());
-		for (Node n: children){
-			n.traverse(al);
-		}
-		return al;
-	}
-	
-	public void describe() {
-	
-		//if (parent!=null) { System.out.println(this.getType() + " Child of " + getParent().getType() + Integer.toString(depth)); }
-		
-		
-		StringBuilder sb = new StringBuilder("");
-		for (int i=0; i<this.depth; i++) { sb.append(".");}
-		sb.append(this.getType());
-		System.out.println(sb);
-		for (Node n: children) {
-			n.describe();
-		}
-		
-		
-	}
-
 	public void updateDepth() {
 		for (Node n: children) {
 			n.setParent(this);
@@ -90,5 +65,30 @@ public abstract class Node {
 	// standardizedVersion() is called on each child node in this method.
 	protected abstract void attachStandardizedChildren(Node replacement);
 	
+
+	/* Following are for Debugging purposes only */
+
+	public ArrayList<String> traverse(ArrayList<String> al) {
+
+		al.add(this.getType());
+		for (Node n: children){
+			n.traverse(al);
+		}
+		return al;
+	}
+	
+	public void describe() {
+			
+		
+		StringBuilder sb = new StringBuilder("");
+		for (int i=0; i<this.depth; i++) { sb.append(".");}
+		sb.append(this.getType());
+		System.out.println(sb);
+		for (Node n: children) {
+			n.describe();
+		}
+		
+		
+	}
 	
 }

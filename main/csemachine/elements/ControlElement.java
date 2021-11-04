@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class ControlElement {
 
-    protected String type;        //gamma, lambda, ->, etc
+    protected String type;        
 
     protected String strValue; 
     private int intValue;
@@ -55,14 +55,13 @@ public class ControlElement {
         return;
     }
 
-    //what about functions? decide later.
-
 
     public String getIdName(){ return strValue; }
     public String getString(){ return strValue; }
     public int getInteger(){ return intValue; }
     public boolean getBool(){ return boolValue; }
     public ArrayList<ControlElement> getTuple() { return tuple; }
+
 
     public void doWhenPopped(Machine machine)
     {
@@ -73,6 +72,8 @@ public class ControlElement {
     }
 
     public String getType(){ return type; }
+
+    /* Functions used for debugging purposes */
 
     public String returnBaseValue(){
         switch (type) {

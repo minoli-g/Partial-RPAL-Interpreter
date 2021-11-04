@@ -18,7 +18,8 @@ public class IdentifierElement extends ControlElement {
         Stack<ControlElement> stack = machine.getStack();
         Environment env = machine.getEnvironment();
 
-        //if reserved, just push and let gamma handle it. Else, look it up in env and push.
+        //if reserved, just push. Gamma will handle it. Else, look it up in env and push.
+        
         if (isReserved(this.strValue)){
             stack.push(this);
             return;

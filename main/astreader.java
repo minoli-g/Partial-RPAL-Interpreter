@@ -37,10 +37,9 @@ public class astreader {
 				int depth = getDepth(line);
 				line = line.substring(depth);
 				
-				//Node thisNode = new Node(line, depth);  //have to add a NodeFactory here
 				Node thisNode = NodeFactory.createNode(line, depth);
 				
-				//executes only if we need to go back up tree
+				//executes only if we need to go back up the tree
 				while (depth < currentDepth) {
 					currentNode = currentNode.getParent();
 					currentDepth = currentNode.getNodeDepth();

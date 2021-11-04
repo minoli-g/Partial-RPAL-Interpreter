@@ -16,10 +16,16 @@ public class GammaElement extends ControlElement {
     public void doWhenPopped(Machine machine)
     {
 
+        /* Gamma Elements, when popped off control, behave differently 
+            depending on the element at the top of the stack.
+            This function checks the stack top and executes relevant behaviour */
+
         Stack<ControlElement> stack = machine.getStack();
         ControlElement stackTop = stack.pop();
 
         if (stackTop instanceof LambdaElement) {
+
+            /* Switch environment and create bindings */
 
             LambdaElement le = (LambdaElement) stackTop;
             ControlElement rand = stack.pop();
@@ -65,6 +71,8 @@ public class GammaElement extends ControlElement {
 
         if (stackTop.getType().equals("TUPLE")){
 
+            /* Gamma acts as a Tuple selector */
+
             int i = stack.pop().getInteger();
             ControlElement ce = stackTop.getTuple().get(i-1);  //Indexing in RPAL starts at 1
 
@@ -73,6 +81,8 @@ public class GammaElement extends ControlElement {
         }
 
         if (stackTop.getType().equals("Y")){
+
+            /* Special behaviour for recursion */
 
             LambdaElement le = (LambdaElement) stack.pop();
             EtaElement ee = new EtaElement(le);
@@ -84,6 +94,8 @@ public class GammaElement extends ControlElement {
 
         if (stackTop instanceof EtaElement) {
 
+            /* Exit the environment represented in the eta */
+
             EtaElement ee = (EtaElement) stackTop;
 
             machine.getControl().push(new GammaElement());
@@ -94,6 +106,9 @@ public class GammaElement extends ControlElement {
         }
 
         if (stackTop instanceof IdentifierElement){
+
+            /* IdentifierElement, when on the stack, represents a default function of RPAL
+                Execute that function on the operand next on stack*/
 
             IdentifierElement ie = (IdentifierElement) stackTop;
             ControlElement ce = stack.pop();
@@ -185,8 +200,6 @@ public class GammaElement extends ControlElement {
                         stack.push(new ControlElement(false));
                         return;
                     }
-
-                //should do isfunction
 
                 default:
                     return;

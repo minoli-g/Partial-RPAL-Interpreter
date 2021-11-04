@@ -9,6 +9,10 @@ public class ControlElementFactory {
         String type = n.getType();
         int l = type.length();
 
+        /*  Handling cases of elements which 
+            do not need special handling when popped off of control,
+            but are not simple values such as Integer and String */
+
         if (type.equals("gamma")){ return new GammaElement(); }
 
         if (type.equals("Y")) { return new ControlElement("Y", true); }
@@ -16,6 +20,8 @@ public class ControlElementFactory {
 
         if (type.equals("<true>")) { return new ControlElement(true); }
         if (type.equals("<false>")) { return new ControlElement(false); }
+
+        /* Handling elements of a specific RPAL type */ 
 
         if (l>5){
 
@@ -26,6 +32,8 @@ public class ControlElementFactory {
             if (type.substring(0,5).equals("<STR:")) { return new ControlElement(type.substring(6,l-2), false); }
 
         }
+
+        /* Handling unary or binary operators */
 
         if (isUnaryOp(type)) { return new UnaryOpElement(type); }
 
