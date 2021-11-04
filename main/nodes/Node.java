@@ -3,12 +3,12 @@ package main.nodes;
 import java.util.ArrayList;
 
 public abstract class Node {
-	//private String type;
+	
 	protected int depth;
 	protected Node parent;
 	protected ArrayList<Node> children;
 	
-	//public Node(String type, int depth) { this.type=type; this.depth = depth; children = new ArrayList<Node>();}
+	
 	
 	public Node(int depth) { this.depth = depth; children = new ArrayList<Node>();}
 	public Node() { children = new ArrayList<Node>(); }
