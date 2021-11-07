@@ -17,7 +17,8 @@ public class NodeFactory {
         return false;
     }
 
-    public static Node createNode(String type, int depth) {
+    public static Node createNode(String type, int depth) 
+    {
 
         if (isAccepted(type)) { return new AcceptedNode(type, depth); }
         
@@ -32,6 +33,7 @@ public class NodeFactory {
             case "@": return new InfixNode(depth);
             case "lambda": return new LambdaNode(depth);
         }
+
         return new AcceptedNode(type,depth);
     }
 }
